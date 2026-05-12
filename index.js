@@ -10,7 +10,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://wanderlust-1gakojnoq-foysal-jamans-projects.vercel.app",
+      "https://wanderlust-snowy-rho.vercel.app",
     ],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
