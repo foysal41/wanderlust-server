@@ -54,12 +54,29 @@ async function run() {
         res.json(result)
     })
 
-    app.get("/destination/:id" , async(req, res)=> {
-      const {id} = req.params
+app.get("/destination/:id", (req, res, next) => {
 
-      const result = await destinationCollection.findOne({_id: new ObjectId(id)})
-      res.json(result)
+  const header = req.headers.authorization
+
+  if (header === "logged in") {
+    next()
+  } else {
+    return res.status(401).json({
+      message: "Unauthorized"
     })
+  }
+
+}, async (req, res) => {
+
+  const { id } = req.params
+
+  const result = await destinationCollection.findOne({
+    _id: new ObjectId(id)
+  })
+
+  res.json(result)
+
+})
 
 
     app.patch("/destination/:id", async (req, res) => {
