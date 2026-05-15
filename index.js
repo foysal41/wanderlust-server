@@ -57,14 +57,8 @@ async function run() {
 app.get("/destination/:id", (req, res, next) => {
 
   const header = req.headers.authorization
-
-  if (header === "logged in") {
-    next()
-  } else {
-    return res.status(401).json({
-      message: "Unauthorized"
-    })
-  }
+  console.log(header)
+ 
 
 }, async (req, res) => {
 
